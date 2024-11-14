@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Emisiones de CO₂</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .chart-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Calculadora de Emisiones de CO₂ para Viajes</h1>
+        <form id="emissionForm" class="p-4 bg-white rounded shadow-sm">
+            <div class="mb-3">
+                <label for="transport" class="form-label">Medio de Transporte:</label>
+                <select id="transport" class="form-select">
+                    <option value="car">Automóvil</option>
+                    <option value="plane">Avión</option>
+                    <option value="train">Tren</option>
+                    <option value="bus">Autobús</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="distance" class="form-label">Distancia (km):</label>
+                <input type="number" id="distance" class="form-control" required min="0" placeholder="Ingresa la distancia en km" required>
+            </div>
+            <!--<button type="button" onclick="calculateEmission()" class="btn btn-primary w-100">Calcular</button>-->
+            <button type="button" onclick="resetForm()" class="btn btn-secondary mt-2">Restablecer</button>
+        </form>
+
+        <!-- Leyenda Interactiva -->
+        <div id="emissionLegend" class="mt-4 p-4 bg-light border rounded"></div>
+
+        <!-- Fila para los Gráficos -->
+        <div class="row">
+            <!-- Gráfico Individual -->
+            <div class="col-md-6 chart-container">
+                <div class="chart-title">Emisiones del Transporte Seleccionado</div>
+                <canvas id="emissionChart"></canvas>
+            </div>
+            <!-- Gráfico Comparativo -->
+            <div class="col-md-6 chart-container">
+                <div class="chart-title">Comparación entre Transportes</div>
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
